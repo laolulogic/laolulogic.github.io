@@ -1,0 +1,26 @@
+# Laolu Logic
+
+> Laolu Logic is the CRM and AI automation practice of Ibrahim "Laolu" Awosanya. It builds CRM systems, workflow automations and AI voice agents for real estate agents, teams and brokerages, marketing agencies, coaches and service businesses worldwide.
+
+Key facts:
+- Founder: Ibrahim "Laolu" Awosanya, CRM expert and AI automation specialist
+- Credentials: Level 2 Seller on Fiverr (5.0 average across 20+ five-star reviews), GoHighLevel Certified, Zapier Certified, HubSpot Digital Marketing certification; $1K+ earned on Upwork
+- Specialism: real estate CRM (Follow Up Boss, Lofty/Chime, BoldTrail/kvCORE, GoHighLevel, REsimpli)
+- Also: HubSpot, Zoho CRM, Zapier, Make, n8n, Vapi, Retell AI, OpenAI, Klaviyo, Mailchimp, Kit, Twilio
+- Works remotely with clients in any time zone
+- Contact: laolulogic@gmail.com · WhatsApp +234 916 973 1457 · https://www.fiverr.com/lao_lu · https://www.upwork.com/freelancers/~01319b2bfa0f24446a
+- Pricing: custom, fixed-scope proposals after a free strategy call
+
+## Pages
+- [Home](https://ibrahimawosanya.github.io/): overview, services, real estate focus, featured work, reviews, process
+- [Services](https://ibrahimawosanya.github.io/services): CRM setup and migration, workflow automation, AI voice agents, email and SMS automation, database reactivation, CRM management, tool stack, FAQ
+- [Real Estate CRM](https://ibrahimawosanya.github.io/real-estate): Follow Up Boss, Lofty, BoldTrail and GoHighLevel services for agents, teams, brokerages and investors
+- [Case studies](https://ibrahimawosanya.github.io/work): 31 case studies plus a library of 56 n8n, Zapier and GoHighLevel workflows
+- [About](https://ibrahimawosanya.github.io/about): background, credentials and working principles
+- [Contact](https://ibrahimawosanya.github.io/contact): book a free 30-minute strategy call or send a message
+
+## Selected results
+- Reactivated 3,287 dormant real estate leads in Lofty: 100% delivery, 0 bounces, 42.86% first-touch open rate
+- Built a Follow Up Boss system for a relocation-focused real estate team: 270 contacts, zero duplicates, delivered in 5 days
+- Migrated a real estate investment team from REsimpli to Lofty with 17 routing rules and a live Zapier sync
+- AI receptionists (Vapi, Retell AI, n8n) answering calls 24/7 with calendar conflict checks at about $0.11 per minute

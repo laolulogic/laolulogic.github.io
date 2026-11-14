@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /backend/
+Disallow: /src/
+
+Sitemap: https://ibrahimawosanya.github.io/sitemap.xml

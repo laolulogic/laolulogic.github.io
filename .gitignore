@@ -1,0 +1,6 @@
+# Private: Google Apps Script backend (sheet ID, settings). Kept on this PC only.
+backend/
+_tmp/
+*.log
+Thumbs.db
+desktop.ini
