@@ -3,7 +3,7 @@
 # Usage (from this folder):  powershell -ExecutionPolicy Bypass -File build.ps1
 $ErrorActionPreference = 'Stop'
 $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
-$SITE = 'https://ibrahimawosanya.github.io'          # <- change once your domain is live, then rebuild
+$SITE = 'https://laolulogic.github.io'          # <- change once your domain is live, then rebuild
 $utf8 = New-Object System.Text.UTF8Encoding $false
 
 $nav = @(

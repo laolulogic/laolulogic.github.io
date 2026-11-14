@@ -3,4 +3,4 @@ Allow: /
 Disallow: /backend/
 Disallow: /src/
 
-Sitemap: https://ibrahimawosanya.github.io/sitemap.xml
+Sitemap: https://laolulogic.github.io/sitemap.xml

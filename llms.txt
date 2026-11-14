@@ -12,12 +12,12 @@ Key facts:
 - Pricing: custom, fixed-scope proposals after a free strategy call
 
 ## Pages
-- [Home](https://ibrahimawosanya.github.io/): overview, services, real estate focus, featured work, reviews, process
-- [Services](https://ibrahimawosanya.github.io/services): CRM setup and migration, workflow automation, AI voice agents, email and SMS automation, database reactivation, CRM management, tool stack, FAQ
-- [Real Estate CRM](https://ibrahimawosanya.github.io/real-estate): Follow Up Boss, Lofty, BoldTrail and GoHighLevel services for agents, teams, brokerages and investors
-- [Case studies](https://ibrahimawosanya.github.io/work): 31 case studies plus a library of 56 n8n, Zapier and GoHighLevel workflows
-- [About](https://ibrahimawosanya.github.io/about): background, credentials and working principles
-- [Contact](https://ibrahimawosanya.github.io/contact): book a free 30-minute strategy call or send a message
+- [Home](https://laolulogic.github.io/): overview, services, real estate focus, featured work, reviews, process
+- [Services](https://laolulogic.github.io/services): CRM setup and migration, workflow automation, AI voice agents, email and SMS automation, database reactivation, CRM management, tool stack, FAQ
+- [Real Estate CRM](https://laolulogic.github.io/real-estate): Follow Up Boss, Lofty, BoldTrail and GoHighLevel services for agents, teams, brokerages and investors
+- [Case studies](https://laolulogic.github.io/work): 31 case studies plus a library of 56 n8n, Zapier and GoHighLevel workflows
+- [About](https://laolulogic.github.io/about): background, credentials and working principles
+- [Contact](https://laolulogic.github.io/contact): book a free 30-minute strategy call or send a message
 
 ## Selected results
 - Reactivated 3,287 dormant real estate leads in Lofty: 100% delivery, 0 bounces, 42.86% first-touch open rate
