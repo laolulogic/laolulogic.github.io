@@ -136,18 +136,129 @@
   const qf = new URLSearchParams(location.search).get('filter');
   if (qf) { const b = filters.find(x => x.dataset.filter === qf); if (b) b.click(); }
 
-  $$('[data-open]').forEach(btn => btn.addEventListener('click', e => {
-    const d = document.getElementById(btn.dataset.open); if (!d || !d.showModal) return;
-    e.preventDefault(); d.showModal(); if (lenis) lenis.stop();
-    history.replaceState(null, '', '#' + btn.dataset.open.replace('dlg-', ''));
-  }));
-  $$('dialog.case-dialog').forEach(d => {
-    d.addEventListener('close', () => { if (lenis) lenis.start(); history.replaceState(null, '', location.pathname + location.search); });
-    d.addEventListener('click', e => { if (e.target === d) d.close(); });
-    $$('[data-close]', d).forEach(b => b.addEventListener('click', () => d.close()));
-  });
-  if (location.hash && document.getElementById('dlg-' + location.hash.slice(1))) {
-    setTimeout(() => { const d = document.getElementById('dlg-' + location.hash.slice(1)); d.showModal(); if (lenis) lenis.stop(); }, 400);
+  /* ---------- Case viewer: side panel with counter, prev/next, metrics, tabs, zoom ---------- */
+  // Lenis blocks wheel events while stopped; let every dialog scroll natively
+  $$('dialog').forEach(dl => dl.setAttribute('data-lenis-prevent', ''));
+  const caseDialogs = $$('dialog.case-dialog');
+  if (caseDialogs.length) {
+    const icon = (id, rot) => `<svg${rot ? ` style="transform:rotate(${rot}deg)"` : ''}><use href="assets/icons.svg#${id}"/></svg>`;
+    // order follows the case cards currently visible (respects the active filter)
+    const order = () => $$('.case:not(.is-hidden) [data-open]').map(b => b.dataset.open);
+    let zoom = null;
+    const openZoom = (src, alt) => {
+      if (!zoom) {
+        zoom = document.createElement('dialog'); zoom.className = 'lightbox'; zoom.setAttribute('aria-label', 'Screenshot'); zoom.setAttribute('data-lenis-prevent', '');
+        zoom.innerHTML = `<figure><div class="lb-img"><img alt=""></div></figure><button class="lb-btn lb-close" type="button" aria-label="Close">${icon('x')}</button>`;
+        document.body.appendChild(zoom);
+        $('.lb-close', zoom).addEventListener('click', () => zoom.close());
+        zoom.addEventListener('click', e => { if (e.target === zoom) zoom.close(); });
+      }
+      const im = $('img', zoom); im.src = src; im.alt = alt || ''; zoom.showModal();
+    };
+    const tabName = h => { const t = h.toLowerCase(); if (/stack|tools/.test(t)) return 'stack'; if (/built|design|deliver|how|what i/.test(t)) return 'build'; return 'overview'; };
+    const enhance = d => {
+      if (d.dataset.enhanced) return; d.dataset.enhanced = '1';
+      const sc = $('.dlg-scroll', d), body = $('.dlg-body', d), hero = $('.dlg-hero', d);
+      const labelTxt = ($('.label', body) || {}).textContent || '';
+      const platform = labelTxt.split('·').slice(1, 2).join('').trim();
+      // sticky bar
+      const bar = document.createElement('div'); bar.className = 'dlg-bar';
+      bar.innerHTML = `<div class="dlg-count"><b data-n></b><span>${esc(labelTxt.replace(/^(Case study|Workflow builds)\s*·\s*/i, ''))}</span></div>
+        <button class="dlg-nav" type="button" data-prev aria-label="Previous case study">${icon('arrow', 180)}</button>
+        <button class="dlg-nav" type="button" data-next aria-label="Next case study">${icon('arrow')}</button>
+        <button class="dlg-nav" type="button" data-close aria-label="Close case study">${icon('x')}</button><i class="dlg-progress"></i>`;
+      sc.prepend(bar);
+      // header first, then the real screenshot shown whole
+      const lead = $('.lead', body);
+      const img = $('img', hero);
+      if (img) {
+        const src = img.getAttribute('src'), alt = img.getAttribute('alt') || ($('h2', body) || {}).textContent || '';
+        hero.innerHTML = `<div class="dlg-shot"><div class="dlg-shot-bar"><i></i><i></i><i></i><span>${esc(platform)}</span></div>
+          <button class="dlg-shot-img" type="button" aria-label="Zoom screenshot"><img src="${esc(src)}" alt="${esc(alt)}" decoding="async"></button>
+          <div class="dlg-shot-cap"><span>Real build screenshot</span><span>Client details removed</span></div></div>`;
+        $('.dlg-shot-img', hero).addEventListener('click', () => openZoom(src, alt));
+      } else {
+        const mock = $('.mock', hero); if (mock) { hero.innerHTML = ''; const wrap = document.createElement('div'); wrap.className = 'dlg-mock'; wrap.appendChild(mock); hero.appendChild(wrap); }
+      }
+      if (lead) lead.after(hero); else body.prepend(hero);
+      // metrics right under the screenshot
+      const kpis = $('.dlg-kpis', body); if (kpis) hero.after(kpis);
+      // tabs from the content columns
+      const cols = $('.dlg-cols', body);
+      if (cols) {
+        const panes = { overview: [], build: [], stack: [] };
+        [...cols.children].forEach(col => { const h = $('h3', col); panes[tabName(h ? h.textContent : '')].push(col); });
+        const stackPills = panes.stack.length ? $$('.tool-pill', panes.stack[0]) : [];
+        if (stackPills.length) { const tools = document.createElement('div'); tools.className = 'dlg-tools'; stackPills.forEach(p => tools.appendChild(p.cloneNode(true))); (lead || $('h2', body)).after(tools); }
+        const defs = [['overview', 'Overview'], ['build', 'How it works'], ['stack', 'Tools & stack']].filter(([k]) => panes[k].length);
+        const uid = d.id;
+        const tabs = document.createElement('div'); tabs.className = 'dlg-tabs'; tabs.setAttribute('role', 'tablist');
+        const holder = document.createElement('div');
+        defs.forEach(([k, name], i) => {
+          const t = document.createElement('button'); t.type = 'button'; t.className = 'dlg-tab'; t.setAttribute('role', 'tab'); t.id = `${uid}-t-${k}`; t.setAttribute('aria-controls', `${uid}-p-${k}`); t.setAttribute('aria-selected', String(i === 0)); t.textContent = name; tabs.appendChild(t);
+          const p = document.createElement('div'); p.className = 'dlg-pane'; p.id = `${uid}-p-${k}`; p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', t.id); p.hidden = i !== 0;
+          panes[k].forEach(col => {
+            const blk = document.createElement('div'); blk.className = 'dlg-block';
+            const h = $('h3', col); if (h) blk.appendChild(h.cloneNode(true));
+            const ul = $('ul', col);
+            if (ul && k === 'build') { const ol = document.createElement('ol'); ol.className = 'dlg-steps'; $$('li', ul).forEach(li => ol.appendChild(li.cloneNode(true))); blk.appendChild(ol); $$('p', col).forEach(x => blk.appendChild(x.cloneNode(true))); }
+            else if (k === 'stack') { const s = document.createElement('div'); s.className = 'dlg-stack'; $$('.tool-pill', col).forEach(x => s.appendChild(x.cloneNode(true))); blk.appendChild(s); }
+            else [...col.children].filter(x => x !== h).forEach(x => blk.appendChild(x.cloneNode(true)));
+            p.appendChild(blk);
+          });
+          holder.appendChild(p);
+        });
+        tabs.addEventListener('click', e => {
+          const t = e.target.closest('.dlg-tab'); if (!t) return;
+          $$('.dlg-tab', tabs).forEach(x => x.setAttribute('aria-selected', String(x === t)));
+          $$('.dlg-pane', holder).forEach(p => { p.hidden = p.id !== t.getAttribute('aria-controls'); });
+        });
+        tabs.addEventListener('keydown', e => {
+          if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; e.stopPropagation();
+          const all = $$('.dlg-tab', tabs), i = all.indexOf(document.activeElement); if (i < 0) return;
+          const n = all[(i + (e.key === 'ArrowRight' ? 1 : -1) + all.length) % all.length]; n.focus(); n.click();
+        });
+        cols.after(tabs); tabs.after(holder);
+      }
+      // closing call to action
+      const old = $('.hero-cta', body), oldBtn = old && $('a', old);
+      const cta = document.createElement('div'); cta.className = 'dlg-cta';
+      cta.innerHTML = `<p>Want something like this for your business?<small>Free 30-minute call. You leave with a clear plan, even if we don't work together.</small></p>
+        <div class="hero-cta"><a class="btn btn--accent btn--sm" href="contact.html#book">${esc(oldBtn ? oldBtn.textContent.trim() : 'Book a strategy call')}${icon('arrow')}</a>
+        <a class="btn btn--line btn--sm" href="https://wa.me/${C.whatsapp}?text=${encodeURIComponent('Hi Laolu, I saw your case study "' + (($('h2', body) || {}).textContent || '') + '" and I want something similar.')}" target="_blank" rel="noopener">WhatsApp me</a></div>`;
+      body.appendChild(cta);
+      // progress bar + controls
+      const prog = $('.dlg-progress', bar);
+      sc.addEventListener('scroll', () => { const m = sc.scrollHeight - sc.clientHeight; prog.style.width = (m > 0 ? sc.scrollTop / m * 100 : 0) + '%'; }, { passive: true });
+      $('[data-prev]', bar).addEventListener('click', () => step(d, -1));
+      $('[data-next]', bar).addEventListener('click', () => step(d, 1));
+      $$('[data-close]', d).forEach(b => b.addEventListener('click', () => d.close()));
+      d.addEventListener('click', e => { if (e.target === d) d.close(); });
+      d.addEventListener('keydown', e => {
+        if (e.target.closest('input, textarea, select, .dlg-tabs')) return;
+        if (e.key === 'ArrowRight') step(d, 1); if (e.key === 'ArrowLeft') step(d, -1);
+      });
+      d.addEventListener('close', () => { if (!d.dataset.swap) { if (lenis) lenis.start(); history.replaceState(null, '', location.pathname + location.search); } delete d.dataset.swap; });
+    };
+    const openCase = (id, from) => {
+      const d = document.getElementById(id); if (!d || !d.showModal) return;
+      enhance(d);
+      const list = order(), i = list.indexOf(id), total = list.length || caseDialogs.length;
+      $('[data-n]', d).textContent = `Case ${String((i < 0 ? 0 : i) + 1).padStart(2, '0')} / ${total}`;
+      if (from) { from.dataset.swap = '1'; from.close(); }
+      d.showModal(); $('.dlg-scroll', d).scrollTop = 0; $('.dlg-progress', d).style.width = '0';
+      const firstTab = $('.dlg-tab', d); if (firstTab && firstTab.getAttribute('aria-selected') !== 'true') firstTab.click();
+      if (lenis) lenis.stop();
+      history.replaceState(null, '', '#' + id.replace('dlg-', ''));
+    };
+    const step = (d, dir) => { const list = order(); if (list.length < 2) return; const i = list.indexOf(d.id); openCase(list[(i + dir + list.length) % list.length], d); };
+    $$('[data-open]').forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); openCase(btn.dataset.open); }));
+    // the whole card image and title open the case too
+    $$('.case').forEach(card => {
+      const b = $('[data-open]', card); if (!b) return;
+      [$('.case-media', card), $('h3', card)].forEach(el => el && el.addEventListener('click', () => openCase(b.dataset.open)));
+    });
+    if (location.hash && document.getElementById('dlg-' + location.hash.slice(1))) setTimeout(() => openCase('dlg-' + location.hash.slice(1)), 300);
   }
 
   /* ---------- Workflow library: filter, show more, lightbox ---------- */
@@ -324,7 +435,7 @@
       e.preventDefault(); if (!v()) return;
       const fd = Object.fromEntries(new FormData(form).entries());
       const label = longFmt.format(chosen);
-      const btn = $('button[type="submit"]', form), lab = $('.label', btn); btn.disabled = true; lab.textContent = 'Booking…';
+      const btn = $('button[type="submit"]', form), lab = $('.btn-text', btn); btn.disabled = true; lab.textContent = 'Booking…';
       const show = html => { result.innerHTML = html; step2.hidden = true; result.classList.add('is-on'); result.focus && result.focus(); };
       const msg = `Hi Laolu, I'd like to book a strategy call on ${label} (${tz}).\n\nName: ${fd.name}\nEmail: ${fd.email}${fd.phone ? '\nPhone: ' + fd.phone : ''}${fd.company ? '\nCompany: ' + fd.company : ''}\nTopic: ${fd.topic}${fd.notes ? '\n\n' + fd.notes : ''}`;
       try {
@@ -364,7 +475,7 @@
       const data = Object.fromEntries(fd.entries());
       data.services = fd.getAll('service').join(', '); delete data.service;
       data.page = location.pathname;
-      const btn = $('button[type="submit"]', cf), lab = $('.label', btn); btn.disabled = true; lab.textContent = 'Sending…';
+      const btn = $('button[type="submit"]', cf), lab = $('.btn-text', btn); btn.disabled = true; lab.textContent = 'Sending…';
       const msg = `Hi Laolu, I'm ${data.name}${data.company ? ' from ' + data.company : ''}.\n\n${data.message}\n\nServices: ${data.services || '-'}\nCRM: ${data.crm || '-'}\nTimeline: ${data.timeline || '-'}\nEmail: ${data.email}${data.phone ? '\nPhone: ' + data.phone : ''}`;
       const show = html => { result.innerHTML = html; cf.hidden = true; result.classList.add('is-on'); };
       try {
