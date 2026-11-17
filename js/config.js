@@ -8,6 +8,10 @@ window.LL = {
   whatsapp: '2349169731457',          // international format, digits only
   phoneDisplay: '+234 916 973 1457',
 
+  // Visitor analytics (free). Paste your IDs to switch them on; they only load after a visitor accepts.
+  ga4: '',                            // Google Analytics 4 Measurement ID, e.g. 'G-XXXXXXXXXX'
+  clarity: '',                        // Microsoft Clarity project ID, e.g. 'abcd1234ef'
+
   // Booking availability (used for the slot picker; the backend also checks your Google Calendar)
   ownerTimeZoneOffset: 1,             // Africa/Lagos = UTC+1, no daylight saving
   dayStartHour: 7,                    // 07:00 Lagos

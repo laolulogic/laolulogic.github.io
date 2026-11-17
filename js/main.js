@@ -456,10 +456,11 @@
         const r = await fetch(C.endpoint, { method: 'POST', body: JSON.stringify({ type: 'booking', start: chosen, tz, localLabel: label, ...fd }) });
         const j = await r.json();
         if (!j.ok) { toast(j.error || 'That time is no longer available.'); btn.disabled = false; lab.textContent = 'Confirm booking'; step2.hidden = true; step1.hidden = false; load(); return; }
+        window.llTrack && llTrack('book_call', { method: 'calendar' });
         show(`<h3>You're booked. See you then.</h3><p><strong>${esc(label)}</strong> (${esc(tz.replace(/_/g, ' '))}). A calendar invite${j.meet ? ' with a Google Meet link' : ''} is on its way to <strong>${esc(fd.email)}</strong>.</p>${j.meet ? `<div class="hero-cta"><a class="btn btn--solid btn--sm" href="${esc(j.meet)}" target="_blank" rel="noopener">Open Meet link</a></div>` : ''}`);
         form.reset();
       } catch (err) {
-        show(`<h3>Almost done: confirm your time</h3><p>Send this request and I'll confirm <strong>${esc(label)}</strong> (${esc(tz.replace(/_/g, ' '))}) with a calendar invite, usually within a few hours.</p><div class="hero-cta"><a class="btn btn--accent btn--sm" href="${waLink(msg)}" target="_blank" rel="noopener">Confirm on WhatsApp</a><a class="btn btn--line btn--sm" href="${mailLink('Strategy call request: ' + label, msg)}">Confirm by email</a></div>`);
+        show(`<h3>Almost done: confirm your time</h3><p>Send this request and I'll confirm <strong>${esc(label)}</strong> (${esc(tz.replace(/_/g, ' '))}) with a calendar invite, usually within an hour.</p><div class="hero-cta"><a class="btn btn--accent btn--sm" href="${waLink(msg)}" target="_blank" rel="noopener">Confirm on WhatsApp</a><a class="btn btn--line btn--sm" href="${mailLink('Strategy call request: ' + label, msg)}">Confirm by email</a></div>`);
       } finally { btn.disabled = false; lab.textContent = 'Confirm booking'; }
     });
     load();
@@ -495,7 +496,8 @@
         if (!C.endpoint) throw Object.assign(new Error('offline'), { offline: true });
         const r = await fetch(C.endpoint, { method: 'POST', body: JSON.stringify({ type: 'contact', ...data }) });
         const j = await r.json(); if (!j.ok) throw new Error(j.error || 'failed');
-        show(`<h3>Message received. Thank you, ${esc(data.name.split(' ')[0])}.</h3><p>A confirmation is on its way to ${esc(data.email)}. I'll reply personally, usually within a few hours.</p><div class="hero-cta"><a class="btn btn--line btn--sm" href="work.html">Browse case studies</a></div>`);
+        window.llTrack && llTrack('generate_lead', { form: 'contact' });
+        show(`<h3>Message received. Thank you, ${esc(data.name.split(' ')[0])}.</h3><p>A confirmation is on its way to ${esc(data.email)}. I'll reply personally, usually within an hour.</p><div class="hero-cta"><a class="btn btn--line btn--sm" href="work.html">Browse case studies</a></div>`);
         cf.reset();
       } catch (err) {
         if (err.offline) show(`<h3>Your message is ready to send</h3><p>Choose how you'd like to send it. Everything you typed is already filled in.</p><div class="hero-cta"><a class="btn btn--accent btn--sm" href="${waLink(msg)}" target="_blank" rel="noopener">Send on WhatsApp</a><a class="btn btn--line btn--sm" href="${mailLink('Project enquiry from ' + data.name, msg)}">Send by email</a></div>`);
@@ -504,6 +506,26 @@
     });
   }
 
+  /* ---------- Free checklist sign-up (separate from the contact form) ---------- */
+  const PDF = '/assets/downloads/crm-leak-checklist.pdf';
+  $$('[data-lead-magnet]').forEach(f => {
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const name = f.elements.name.value.trim(), email = f.elements.email.value.trim();
+      const bad = [[f.elements.name, name.length >= 2], [f.elements.email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)]];
+      bad.forEach(([el, ok]) => { el.closest('.field').classList.toggle('has-error', !ok); el.setAttribute('aria-invalid', String(!ok)); });
+      const first = bad.find(([, ok]) => !ok); if (first) { first[0].focus(); $('.lm-note', f).textContent = 'Please add your first name and a valid email.'; return; }
+      const btn = $('button[type="submit"]', f), lab = $('.btn-text', btn); btn.disabled = true; lab.textContent = 'Preparing your download…';
+      if (C.endpoint && !f.elements.website_url.value) {
+        try { await fetch(C.endpoint, { method: 'POST', body: JSON.stringify({ type: 'resource', resource: 'CRM Leak Checklist', name, email, services: 'Free checklist', message: 'Requested the free CRM Leak Checklist (PDF).', page: location.pathname, website_url: f.elements.website_url.value }) }); } catch (err) {}
+      }
+      window.llTrack && llTrack('generate_lead', { form: 'checklist' });
+      const box = f.closest('.lm');
+      f.outerHTML = `<div class="lm-done" role="status"><b>It's yours, ${esc(name.split(' ')[0])}.</b><p>Your download should start now. A copy is on its way to ${esc(email)}.</p><div class="hero-cta"><a class="btn btn--accent btn--sm" href="${PDF}" download>Download the PDF</a><a class="btn btn--line btn--sm" href="/contact#book">Book a free review call</a></div></div>`;
+      box.classList.add('is-done');
+      const a = document.createElement('a'); a.href = PDF; a.download = 'Laolu-Logic-CRM-Leak-Checklist.pdf'; document.body.appendChild(a); a.click(); a.remove();
+    });
+  });
   /* ---------- Copy to clipboard ---------- */
   $$('[data-copy]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy).then(() => toast('Copied: ' + b.dataset.copy)); }));
 

@@ -12,11 +12,11 @@ $TODAY = (Get-Date).ToString('yyyy-MM-dd')
 
 $nav = @(
   @{ id = 'home';        href = '/';            label = 'Home' },
+  @{ id = 'about';       href = '/about';       label = 'About' },
   @{ id = 'services';    href = '/services';    label = 'Services' },
   @{ id = 'real-estate'; href = '/real-estate'; label = 'Real Estate' },
   @{ id = 'work';        href = '/work';        label = 'Case Studies' },
   @{ id = 'blog';        href = '/blog/';       label = 'Blog' },
-  @{ id = 'about';       href = '/about';       label = 'About' },
   @{ id = 'contact';     href = '/contact';     label = 'Contact' }
 )
 
@@ -103,16 +103,34 @@ $footer = @"
           <a href="mailto:laolulogic@gmail.com" aria-label="Email laolulogic@gmail.com"><svg aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg></a>
         </div>
       </div>
-      <div class="f-col"><h4>Company</h4><ul><li><a href="/services">Services</a></li><li><a href="/services#packages">Packages</a></li><li><a href="/real-estate">Real Estate CRM</a></li><li><a href="/work">Case studies</a></li><li><a href="/blog/">Blog</a></li><li><a href="/about">About</a></li><li><a href="/faq">FAQ</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/services#packages">Packages</a></li><li><a href="/real-estate">Real Estate CRM</a></li><li><a href="/work">Case studies</a></li><li><a href="/blog/">Blog</a></li><li><a href="/faq">FAQ</a></li><li><a href="/contact">Contact</a></li></ul></div>
       <div class="f-col"><h4>Services</h4><ul><li><a href="/services#crm">CRM setup &amp; migration</a></li><li><a href="/services#automation">Workflow automation</a></li><li><a href="/services#ai-voice">AI voice agents</a></li><li><a href="/services#email-sms">Email &amp; SMS automation</a></li><li><a href="/services#reactivation">Database reactivation</a></li><li><a href="/services#management">CRM management</a></li></ul></div>
-      <div class="f-col"><h4>Get in touch</h4><ul><li><a href="/contact#book">Book a strategy call</a></li><li><a href="mailto:laolulogic@gmail.com">laolulogic@gmail.com</a></li><li><a href="https://wa.me/2349169731457" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="tel:+2349169731457">+234 916 973 1457</a></li><li><a href="https://www.fiverr.com/lao_lu" target="_blank" rel="noopener">Hire on Fiverr</a></li><li><a href="https://www.upwork.com/freelancers/~01319b2bfa0f24446a" target="_blank" rel="noopener">Hire on Upwork</a></li></ul></div>
+      <div class="f-col"><h4>Get in touch</h4><ul><li><a href="/contact#book">Book a strategy call</a></li><li><a href="mailto:laolulogic@gmail.com">laolulogic@gmail.com</a></li><li><a href="https://wa.me/2349169731457" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="tel:+2349169731457">Call me</a></li><li><a href="https://www.fiverr.com/lao_lu" target="_blank" rel="noopener">Hire on Fiverr</a></li><li><a href="https://www.upwork.com/freelancers/~01319b2bfa0f24446a" target="_blank" rel="noopener">Hire on Upwork</a></li></ul></div>
     </div>
-    <div class="f-bottom"><span>&copy; <span data-year>2026</span> Laolu Logic &middot; Ibrahim &ldquo;Laolu&rdquo; Awosanya</span><span><a href="/faq">FAQ</a> &middot; <a href="/sitemap.xml">Sitemap</a> &middot; Remote, working with teams worldwide</span></div>
+    <div class="f-bottom"><span>&copy; <span data-year>2026</span> Laolu Logic &middot; Ibrahim &ldquo;Laolu&rdquo; Awosanya</span><span><a href="/faq">FAQ</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <button type="button" class="link-btn" data-cookie-settings>Cookie settings</button> &middot; <a href="/sitemap.xml">Sitemap</a></span></div>
   </div>
 </footer>
+<div class="m-cta" aria-label="Quick contact"><a class="btn btn--accent btn--sm" href="/contact#book">Book a free call</a><a class="btn btn--line btn--sm" href="https://wa.me/2349169731457" target="_blank" rel="noopener"><i style="--logo:url(/assets/logos/whatsapp.svg)"></i>WhatsApp</a></div>
 <a class="wa-float" href="https://wa.me/2349169731457?text=Hi%20Laolu%2C%20I%20found%20you%20on%20your%20website." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i style="--logo:url(/assets/logos/whatsapp.svg)"></i><span class="tip">Chat on WhatsApp</span></a>
 <button class="to-top" type="button" aria-label="Back to top"><svg class="ring" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26"/></svg><svg class="arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></button>
 "@
+
+# Free checklist sign-up card (blog posts, blog index, home). Does not replace any contact form.
+function Lead-Magnet([string]$id) {
+@"
+<aside class="lm" data-reveal aria-labelledby="lm-h-$id">
+  <div class="lm-visual" aria-hidden="true"><div class="lm-sheet"><i></i><b>The CRM Leak Checklist</b><span></span><span></span><span></span><span></span><span></span></div><div class="lm-sheet lm-sheet--back"></div></div>
+  <div class="lm-copy"><span class="lm-tag">Free download &middot; PDF</span><h3 id="lm-h-$id">The CRM Leak Checklist</h3><p>32 quick checks to find where your CRM is losing leads, from speed to lead and routing to follow-up and texting compliance. Takes about 20 minutes.</p></div>
+  <form class="lm-form" data-lead-magnet novalidate>
+    <div class="field"><label for="lm-n-$id">First name</label><input id="lm-n-$id" name="name" autocomplete="given-name" required></div>
+    <div class="field"><label for="lm-e-$id">Email</label><input id="lm-e-$id" name="email" type="email" autocomplete="email" required></div>
+    <input class="hp" type="text" name="website_url" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn btn--accent" type="submit"><span class="btn-text">Get the checklist</span><svg><use href="/assets/icons.svg#arrow"/></svg></button>
+    <p class="lm-note" role="status">Instant download. No spam, ever.</p>
+  </form>
+</aside>
+"@
+}
 
 # Make every internal URL root-absolute and clean (works from any folder depth, matches GitHub Pages)
 function Fix-Urls([string]$h) {
@@ -132,7 +150,9 @@ function Write-Page($meta, [string]$body, [string]$outRel) {
   $preload = if ($meta.preload) { "`n  <link rel=""preload"" as=""image"" type=""image/webp"" href=""$($meta.preload)"" imagesrcset=""assets/img/laolu-portrait-480.webp 480w, assets/img/laolu-portrait.webp 780w"" imagesizes=""(max-width: 900px) 78vw, 440px"" fetchpriority=""high"">" } else { '' }
   $title = Enc $meta.title; $desc = Enc $meta.description
   $ogType = if ($meta.ogType) { $meta.ogType } else { 'website' }
-  $ogImg = if ($meta.ogImage) { "$SITE/$($meta.ogImage.TrimStart('/'))" } else { "$SITE/assets/img/og.png" }
+  $ogKey = ($outRel -replace '\.html$', '') -replace '\\', '-'
+  $ogKey = switch -Regex ($ogKey) { '^index$' { 'home' } '^blog-index$' { 'blog' } '^case-studies-(.+)$' { 'case-' + $Matches[1] } default { $ogKey } }
+  $ogImg = if (Test-Path (Join-Path $Root "assets\og\$ogKey.jpg")) { "$SITE/assets/og/$ogKey.jpg" } elseif ($meta.ogImage) { "$SITE/$($meta.ogImage.TrimStart('/'))" } else { "$SITE/assets/img/og.png" }
   $extraHead = if ($meta.extraHead) { "`n  " + $meta.extraHead } else { '' }
   $foot = if ($body -match 'class="section band big-cta"') { [regex]::Replace($footer, '(?s)\s*<div class="f-cta">.*?</div>\s*</div>', '', 1) } else { $footer }
   $html = @"
@@ -153,17 +173,20 @@ function Write-Page($meta, [string]$body, [string]$outRel) {
   <meta property="og:description" content="$desc">
   <meta property="og:url" content="$canon">
   <meta property="og:image" content="$ogImg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="$title">
   <meta name="twitter:description" content="$desc">
   <meta name="twitter:image" content="$ogImg">$extraHead
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Laolu Logic blog" href="$SITE/blog/feed.xml">
   <script>(function(){try{var t=localStorage.getItem('ll-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="preload" href="/assets/fonts/geist-normal-300_800-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">$preload
   $schemaTags
 </head>
@@ -177,11 +200,28 @@ $body
 $foot
 <script src="js/config.js"></script>
 <script src="js/main.js" defer></script>
+<script src="js/fx.js" defer></script>
+<script src="js/track.js" defer></script>
 </body>
 </html>
 "@
   $out = Join-Path $Root $outRel
   New-Item -ItemType Directory -Force (Split-Path $out) | Out-Null
+  # Every WhatsApp link opens with a message that matches the page it was clicked on
+  $pg = ($meta.title -replace '\s*\|\s*Laolu Logic\s*$', '').Trim()
+  $rel = $outRel.Replace('/', '\')
+  $wa = if ($rel -like 'blog\index.html') { "Hi Laolu, I've been reading your blog and I'd like to talk about my CRM and follow-up." }
+    elseif ($rel -like 'blog\*') { "Hi Laolu, I just read your article `"$pg`" and I'd like to talk about my setup." }
+    elseif ($rel -like 'case-studies\*') { "Hi Laolu, I saw your case study `"$pg`" and I want something similar for my business." }
+    elseif ($rel -eq 'real-estate.html') { "Hi Laolu, I work in real estate and I'd like help with my CRM, lead follow-up and automation." }
+    elseif ($rel -eq 'services.html') { "Hi Laolu, I'm interested in one of your CRM & AI automation packages. Can we talk?" }
+    elseif ($rel -eq 'work.html') { "Hi Laolu, I've been looking through your case studies and I'd like to discuss a project." }
+    elseif ($rel -eq 'about.html') { "Hi Laolu, I read about you and your work, and I'd like to talk about a project." }
+    elseif ($rel -eq 'faq.html') { "Hi Laolu, I have a question that isn't answered on your FAQ page." }
+    elseif ($rel -eq 'contact.html') { "Hi Laolu, I'd like to book a call about my CRM and automation." }
+    else { "Hi Laolu, I found you on your website and I'd like to talk about CRM and AI automation for my business." }
+  $waUrl = 'https://wa.me/2349169731457?text=' + [uri]::EscapeDataString($wa)
+  $html = [regex]::Replace($html, 'https://wa\.me/2349169731457(?:\?text=[^"]*)?"', { param($m) $waUrl + '"' })
   [IO.File]::WriteAllText($out, (Fix-Urls $html), $utf8)
 }
 
@@ -317,7 +357,7 @@ Get-ChildItem (Join-Path $Root 'src\pages') -Filter *.html | ForEach-Object {
   $m = [regex]::Match($raw, '(?s)^<!--META(.*?)META-->')
   if (-not $m.Success) { throw "Missing META block in $($_.Name)" }
   $meta = $m.Groups[1].Value | ConvertFrom-Json
-  $body = $raw.Substring($m.Length).Trim().Replace('<!--LATEST_POSTS-->', $latest)
+  $body = $raw.Substring($m.Length).Trim().Replace('<!--LATEST_POSTS-->', $latest).Replace('<!--LEAD_MAGNET-->', (Lead-Magnet 'home'))
   Write-Page $meta $body $_.Name
   "built $($_.Name)"
 }
@@ -391,7 +431,7 @@ foreach ($p in $posts) {
   $author = "<div class=""art-author""><img src=""/assets/img/laolu-portrait-480.webp"" alt=""Ibrahim 'Laolu' Awosanya"" width=""72"" height=""72"" loading=""lazy""><div><p class=""art-author-h"">Written by Ibrahim &ldquo;Laolu&rdquo; Awosanya</p><p>CRM &amp; AI automation specialist, Level 2 seller on Fiverr and certified across HighLevel, HubSpot, Zapier, Make, n8n and more. I build CRMs and automations that follow up on every lead. <a class=""link"" href=""/about"">More about me</a></p></div></div>"
   $endCta = "<div class=""art-end-cta""><h2 class=""no-toc"">$($p.ctaTitle)</h2><p>$($p.ctaText)</p><div class=""hero-cta""><a class=""btn btn--accent"" href=""/contact#book"">Book a free strategy call <svg><use href=""/assets/icons.svg#arrow""/></svg></a><a class=""btn btn--line"" href=""/services#packages"">See packages</a></div></div>"
   $toc = Add-Toc ($html + $faqHtml)
-  $body = $take + "`n" + $toc.body + "`n" + $author + "`n" + $endCta
+  $body = $take + "`n" + $toc.body + "`n" + (Lead-Magnet "post") + "`n" + $author + "`n" + $endCta
   $relPosts = @($posts | Where-Object { $_.slug -ne $p.slug -and $_.catSlug -eq $p.catSlug } | Select-Object -First 2)
   if ($relPosts.Count -lt 2) { $relPosts += @($posts | Where-Object { $_.slug -ne $p.slug -and $relPosts.slug -notcontains $_.slug } | Select-Object -First (2 - $relPosts.Count)) }
   $relHtml = ($relPosts | ForEach-Object { Post-Card $_ }) -join ''
@@ -441,6 +481,7 @@ if ($posts.Count) {
     <div class="post-grid">
 $grid
     </div>
+$(Lead-Magnet 'blog')
   </div>
 </section>
 "@
