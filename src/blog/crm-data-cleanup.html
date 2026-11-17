@@ -1,0 +1,50 @@
+<!--META
+{
+  "order": 18,
+  "title": "CRM Data Cleanup: Fix Duplicates, Dead Tags and Messy Records | Laolu Logic",
+  "h1": "CRM data cleanup: how to fix duplicates, dead tags and messy records",
+  "description": "A step-by-step CRM cleanup process: back up, de-duplicate, standardize fields, rationalize tags, archive dead contacts and set rules so the mess doesn't come back.",
+  "category": "CRM Strategy",
+  "cover": "assets/cover/airtable-dashboard.webp",
+  "coverAlt": "Airtable client CRM and project tracker dashboard",
+  "coverLabel": "CRM data",
+  "keywords": "CRM data cleanup, remove duplicate contacts CRM, CRM tag cleanup, clean up CRM database, CRM data hygiene, merge duplicates in CRM",
+  "relatedCase": "hubspot-scoring",
+  "ctaTitle": "Is your CRM too messy to trust?",
+  "ctaText": "I'll audit it on a free call and give you a prioritized cleanup plan.",
+  "takeaways": ["Back up everything before you change anything.", "Fix duplicates and formatting first; they break automations.", "Cut the tag list down to a documented set your team agrees on.", "Prevent the mess from returning with validation and monthly checks."],
+  "faq": [
+    {"q": "How often should I clean my CRM?", "a": "A deep cleanup once, then a monthly check of duplicates, missing fields and stale records keeps it healthy."},
+    {"q": "Should I delete old contacts?", "a": "Usually archive rather than delete. Keep Do Not Contact records so you never message them by mistake, and remove truly invalid contacts."},
+    {"q": "Can CRM cleanup be automated?", "a": "Partly. Validation on entry, scheduled duplicate checks and workflows that archive stale or junk records reduce manual work a lot."}
+  ]
+}
+META-->
+<p>A messy CRM costs more than time. Duplicates mean two agents call the same lead. Inconsistent tags mean automations miss people. Bad emails damage your sender reputation. Here's the cleanup process I run before any new automation.</p>
+
+<h2>1. Back up first</h2>
+<p>Export everything before you merge, delete or retag anything. If something goes wrong, you can restore it.</p>
+
+<h2>2. De-duplicate</h2>
+<ul>
+  <li>Match on email and phone, then review near-matches by name.</li>
+  <li>Merge, keeping the richest record and all notes.</li>
+  <li>For contacts with no email or phone, use a custom ID going forward.</li>
+</ul>
+
+<h2>3. Standardize fields</h2>
+<p>Phone numbers in one format, names capitalized, states and countries consistent, sources using one naming convention. Automations and reports depend on it.</p>
+
+<h2>4. Rationalize tags</h2>
+<p>Most CRMs I open have hundreds of tags, many meaning the same thing. Export the tag list, group duplicates, decide on a short documented set and merge the rest. In shared brokerage accounts, I propose the cleanup and get approval before changing anything.</p>
+
+<h2>5. Archive the dead weight</h2>
+<p>Hard bounces, disconnected numbers and junk form fills should be archived or removed. Keep Do Not Contact records protected so they never receive messages.</p>
+
+<h2>6. Keep it clean</h2>
+<ul>
+  <li><strong>Validate on entry:</strong> check email and phone before creating contacts (see <a href="/blog/send-leads-to-crm-automatically">sending leads to your CRM</a>).</li>
+  <li><strong>Find before create</strong> in every integration.</li>
+  <li><strong>Scheduled cleanup:</strong> I've built an n8n "reaper" that archives stale and junk HubSpot records automatically (<a href="/case-studies/hubspot-scoring">see the case study</a>).</li>
+  <li><strong>A monthly review</strong>, covered in my <a href="/blog/crm-maintenance-checklist">CRM maintenance checklist</a>.</li>
+</ul>

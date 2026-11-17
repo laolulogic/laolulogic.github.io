@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Why Automations Fail Quietly (and How to Catch Errors Early) | Laolu Logic</title>
+  <meta name="description" content="The most common reasons Zapier, Make, n8n and CRM automations break silently, and the monitoring, alerts and testing habits that catch problems before leads are lost.">
+  <link rel="canonical" href="https://laolulogic.github.io/blog/why-automations-fail">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Ibrahim Awosanya (Laolu)">
+  <meta name="theme-color" content="#0c0a11">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Laolu Logic">
+  <meta property="og:title" content="Why Automations Fail Quietly (and How to Catch Errors Early) | Laolu Logic">
+  <meta property="og:description" content="The most common reasons Zapier, Make, n8n and CRM automations break silently, and the monitoring, alerts and testing habits that catch problems before leads are lost.">
+  <meta property="og:url" content="https://laolulogic.github.io/blog/why-automations-fail">
+  <meta property="og:image" content="https://laolulogic.github.io/assets/cover/n8n-onboarding.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why Automations Fail Quietly (and How to Catch Errors Early) | Laolu Logic">
+  <meta name="twitter:description" content="The most common reasons Zapier, Make, n8n and CRM automations break silently, and the monitoring, alerts and testing habits that catch problems before leads are lost.">
+  <meta name="twitter:image" content="https://laolulogic.github.io/assets/cover/n8n-onboarding.webp">
+  <meta property="article:published_time" content="2026-11-17"><meta name="keywords" content="automation errors, Zapier errors, Zap not working, automation monitoring, n8n error handling, Make error handling, broken automation fix">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Laolu Logic blog" href="https://laolulogic.github.io/blog/feed.xml">
+  <script>(function(){try{var t=localStorage.getItem('ll-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+ {"@type":"ProfessionalService","@id":"https://laolulogic.github.io/#business","name":"Laolu Logic","url":"https://laolulogic.github.io/","logo":"https://laolulogic.github.io/assets/img/logo.png","image":"https://laolulogic.github.io/assets/img/og.png","description":"CRM and AI automation: CRM setup and migration, workflow automation, AI voice agents, email and SMS automation and CRM management for real estate teams and growing businesses.","email":"laolulogic@gmail.com","telephone":"+2349169731457","areaServed":"Worldwide","founder":{"@id":"https://laolulogic.github.io/#person"},"priceRange":"Custom quotes","sameAs":["https://www.fiverr.com/lao_lu","https://www.upwork.com/freelancers/~01319b2bfa0f24446a","https://www.linkedin.com/in/ibrahim-awosanya"],"knowsAbout":["CRM implementation","AI automation","Follow Up Boss","Lofty CRM","GoHighLevel","BoldTrail","kvCORE","HubSpot","Zapier","Make.com","n8n","Vapi","Retell AI","CRM migration","Real estate CRM","AI voice agents","Email marketing automation","SMS automation","A2P 10DLC","Database reactivation","Lead routing"]},
+ {"@type":"Person","@id":"https://laolulogic.github.io/#person","name":"Ibrahim Awosanya","alternateName":"Laolu","jobTitle":"CRM & AI Automation Specialist","url":"https://laolulogic.github.io/about","image":"https://laolulogic.github.io/assets/img/laolu-portrait.png","worksFor":{"@id":"https://laolulogic.github.io/#business"},"sameAs":["https://www.fiverr.com/lao_lu","https://www.upwork.com/freelancers/~01319b2bfa0f24446a","https://www.linkedin.com/in/ibrahim-awosanya"],"hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HighLevel Certified Admin","recognizedBy":{"@type":"Organization","name":"HighLevel"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HighLevel AI Employee Certification","recognizedBy":{"@type":"Organization","name":"HighLevel"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HubSpot Digital Marketing Certification","recognizedBy":{"@type":"Organization","name":"HubSpot Academy"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HubSpot Marketing Software Certification","recognizedBy":{"@type":"Organization","name":"HubSpot Academy"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HubSpot Revenue Operations (RevOps) Certification","recognizedBy":{"@type":"Organization","name":"HubSpot Academy"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Zapier Certified","recognizedBy":{"@type":"Organization","name":"Zapier"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Make Academy Certification","recognizedBy":{"@type":"Organization","name":"Make"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"n8n Course Certification","recognizedBy":{"@type":"Organization","name":"n8n"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Klaviyo Academy Certification","recognizedBy":{"@type":"Organization","name":"Klaviyo"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Zoho CRM Certification","recognizedBy":{"@type":"Organization","name":"Zoho"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Airtable Builder Certification","recognizedBy":{"@type":"Organization","name":"Airtable"}}]},
+ {"@type":"WebSite","@id":"https://laolulogic.github.io/#website","url":"https://laolulogic.github.io/","name":"Laolu Logic","publisher":{"@id":"https://laolulogic.github.io/#business"},"inLanguage":"en"}
+]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why automations fail quietly, and how to catch errors before clients do","description":"The most common reasons Zapier, Make, n8n and CRM automations break silently, and the monitoring, alerts and testing habits that catch problems before leads are lost.","image":"https://laolulogic.github.io/assets/cover/n8n-onboarding.webp","datePublished":"2026-11-17","dateModified":"2026-11-17","author":{"@id":"https://laolulogic.github.io/#person"},"publisher":{"@id":"https://laolulogic.github.io/#business"},"mainEntityOfPage":"https://laolulogic.github.io/blog/why-automations-fail","articleSection":"Workflow Automation","keywords":"automation errors, Zapier errors, Zap not working, automation monitoring, n8n error handling, Make error handling, broken automation fix","wordCount":299}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://laolulogic.github.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://laolulogic.github.io/blog/"},{"@type":"ListItem","position":3,"name":"Why automations fail quietly, and how to catch errors before clients do"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why did my Zap stop working?","acceptedAnswer":{"@type":"Answer","text":"Common causes are an expired app connection, a changed form field, a required field in the CRM, an app API change or a filter that no longer matches."}},{"@type":"Question","name":"How do I get alerted when an automation fails?","acceptedAnswer":{"@type":"Answer","text":"Use the platform\u0027s error notifications and add your own: an error path that emails or messages you, plus a check that confirms the expected record was created."}},{"@type":"Question","name":"Can you fix automations someone else built?","acceptedAnswer":{"@type":"Answer","text":"Yes. I regularly diagnose and repair existing zaps, scenarios and CRM workflows and document them so they are easier to maintain."}}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="container nav">
+    <a href="/" class="brand" aria-label="Laolu Logic, home"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect class="m-bg" width="40" height="40" rx="11"/><path class="m-l" d="M12 9.5v14h9" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path class="m-l" d="M19 16.5v14h9" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle class="m-n1" cx="12" cy="9.5" r="2.7"/><circle class="m-n2" cx="28" cy="30.5" r="2.7"/></svg><span><b>Laolu</b><em>Logic</em></span></a>
+    <nav aria-label="Main"><ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/services">Services</a></li><li><a href="/real-estate">Real Estate</a></li><li><a href="/work">Case Studies</a></li><li><a href="/blog/" aria-current="page">Blog</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ul></nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark mode"><svg class="i-moon"><use href="/assets/icons.svg#moon"/></svg><svg class="i-sun"><use href="/assets/icons.svg#sun"/></svg></button>
+      <a href="/contact#book" class="btn btn--solid btn--sm"><span class="dot" aria-hidden="true"></span>Book a call</a>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-panel" id="menu-panel" aria-hidden="true">
+  <ol><li><a href="/">Home</a></li><li><a href="/services">Services</a></li><li><a href="/real-estate">Real Estate</a></li><li><a href="/work">Case Studies</a></li><li><a href="/blog/">Blog</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ol>
+  <div class="menu-foot">
+    <a class="btn btn--accent btn--sm" href="/contact#book">Book a strategy call</a>
+    <a class="btn btn--line btn--sm" href="https://wa.me/2349169731457" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn--line btn--sm" href="mailto:laolulogic@gmail.com">Email</a>
+  </div>
+</div>
+<main id="main">
+<article class="art art--post">
+  <header class="art-hero band">
+    <div class="container art-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span aria-current="page">Why automations fail quietly, and how to catch errors before clients do</span></nav>
+      <p class="art-kicker"><a class="chip chip--accent" href="/blog/?cat=workflow-automation">Workflow Automation</a></p>
+      <h1 class="art-title">Why automations fail quietly, and how to catch errors before clients do</h1>
+      <p class="art-dek">The most common reasons Zapier, Make, n8n and CRM automations break silently, and the monitoring, alerts and testing habits that catch problems before leads are lost.</p>
+      <div class="art-meta"><span class="art-by"><img src="/assets/img/laolu-portrait-480.webp" alt="" width="28" height="28">Ibrahim &ldquo;Laolu&rdquo; Awosanya</span><span><svg><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-17">November 17, 2026</time></span><span><svg><use href="/assets/icons.svg#clock"/></svg>3 min read</span></div>
+    </div>
+  </header>
+  <div class="container art-cover"><figure class="art-shot"><div class="art-shot-bar"><i></i><i></i><i></i><span>n8n</span></div><button class="art-shot-img" type="button" data-zoom="/assets/cover/n8n-onboarding.webp" aria-label="Zoom image"><img src="/assets/cover/n8n-onboarding.webp" alt="n8n onboarding workflow with branching, logging and alerts" width="1440" height="900" decoding="async" fetchpriority="high"></button></figure></div>
+  
+  <div class="container art-layout">
+    <aside class="art-aside" aria-label="On this page">
+      <div class="art-sticky">
+        <p class="art-aside-h">On this page</p>
+        <ol class="art-toc"><li><a href="#why-automations-break">Why automations break</a></li><li><a href="#success-is-not-the-same-as-working">&quot;Success&quot; is not the same as working</a></li><li><a href="#how-i-monitor-automations">How I monitor automations</a></li><li><a href="#testing-habits-that-prevent-problems">Testing habits that prevent problems</a></li><li><a href="#frequently-asked-questions">Frequently asked questions</a></li></ol>
+        <div class="art-aside-cta"><strong>Want this done for you?</strong><p>Free 30-minute strategy call. Clear plan, no pressure.</p><a class="btn btn--accent btn--sm" href="/contact#book">Book a call</a></div>
+        <div class="art-share"><button type="button" class="link" data-copy-url><svg><use href="/assets/icons.svg#copy"/></svg>Copy link</button><a class="link" data-share="linkedin" href="#" target="_blank" rel="noopener"><i style="--logo:url(/assets/logos/linkedin.svg)"></i>Share</a></div>
+      </div>
+    </aside>
+    <div class="art-body prose">
+<div class="art-takeaways"><p class="art-takeaways-h">Key takeaways</p><ul><li>Most automations fail because something upstream changed, not because the logic was wrong.</li><li>A 'success' status doesn't mean the right thing happened.</li><li>Alert on errors and on missing results.</li><li>Log every run somewhere a human can check.</li></ul></div>
+<p>The most dangerous automation isn't the one that throws an error. It's the one that says "success" while leads quietly stop arriving. I fix broken automations every week; these are the causes I see most, and how to catch them.</p>
+
+<h2 id="why-automations-break">Why automations break</h2>
+<ol>
+  <li><strong>Expired connections:</strong> someone changes a password and the app disconnects.</li>
+  <li><strong>Changed fields:</strong> a form field is renamed and the data stops mapping.</li>
+  <li><strong>Required fields:</strong> the CRM rejects a record because a field is missing.</li>
+  <li><strong>API changes:</strong> an app updates and an old step stops working.</li>
+  <li><strong>Plan limits:</strong> a task or operation limit is reached and runs are held.</li>
+  <li><strong>Silent filters:</strong> a filter that no longer matches anything.</li>
+</ol>
+<p>In one project, a Zapier plan had frozen and 37 leads were held. I diagnosed it, fixed the plan and replayed the held leads safely so none were lost (<a href="/case-studies/investor-migration">read the case study</a>).</p>
+
+<h2 id="success-is-not-the-same-as-working">"Success" is not the same as working</h2>
+<p>A zap can run successfully and still do the wrong thing: create a duplicate, skip a step on a filter, or update the wrong record. Monitoring has to check outcomes, not just statuses.</p>
+
+<aside class="art-inline-cta"><div><strong>Have an automation that keeps breaking?</strong><p>I diagnose and fix broken zaps, scenarios and workflows, then add monitoring. Book a free call.</p></div><a class="btn btn--accent btn--sm" href="/contact#book">Book a free strategy call <svg><use href="/assets/icons.svg#arrow"/></svg></a></aside>
+<h2 id="how-i-monitor-automations">How I monitor automations</h2>
+<ul>
+  <li><strong>Error paths:</strong> every important workflow has a branch that alerts a human on failure.</li>
+  <li><strong>Outcome checks:</strong> a daily or weekly comparison, for example form submissions vs new CRM contacts.</li>
+  <li><strong>Run logs:</strong> key runs logged to a sheet or database someone can read.</li>
+  <li><strong>Fallbacks:</strong> a backup message or task when an AI or API step fails.</li>
+</ul>
+
+<h2 id="testing-habits-that-prevent-problems">Testing habits that prevent problems</h2>
+<ol>
+  <li>Test every path with realistic data before going live.</li>
+  <li>Retest after any change to a form, field or connected app.</li>
+  <li>Document what each workflow does and who owns it.</li>
+</ol>
+<p>If you've inherited automations nobody understands, I can audit, fix and document them, or keep watch monthly with <a href="/services#management">CRM management</a>.</p><h2 id="frequently-asked-questions">Frequently asked questions</h2><div class="faq art-faq"><details><summary><span class="q">Why did my Zap stop working?</span><span class="pm"><svg><use href="/assets/icons.svg#plus"/></svg></span></summary><div class="answer"><p>Common causes are an expired app connection, a changed form field, a required field in the CRM, an app API change or a filter that no longer matches.</p></div></details><details><summary><span class="q">How do I get alerted when an automation fails?</span><span class="pm"><svg><use href="/assets/icons.svg#plus"/></svg></span></summary><div class="answer"><p>Use the platform's error notifications and add your own: an error path that emails or messages you, plus a check that confirms the expected record was created.</p></div></details><details><summary><span class="q">Can you fix automations someone else built?</span><span class="pm"><svg><use href="/assets/icons.svg#plus"/></svg></span></summary><div class="answer"><p>Yes. I regularly diagnose and repair existing zaps, scenarios and CRM workflows and document them so they are easier to maintain.</p></div></details></div>
+<div class="art-author"><img src="/assets/img/laolu-portrait-480.webp" alt="Ibrahim 'Laolu' Awosanya" width="72" height="72" loading="lazy"><div><p class="art-author-h">Written by Ibrahim &ldquo;Laolu&rdquo; Awosanya</p><p>CRM &amp; AI automation specialist, Level 2 seller on Fiverr and certified across HighLevel, HubSpot, Zapier, Make, n8n and more. I build CRMs and automations that follow up on every lead. <a class="link" href="/about">More about me</a></p></div></div>
+<div class="art-end-cta"><h2 class="no-toc">Have an automation that keeps breaking?</h2><p>I diagnose and fix broken zaps, scenarios and workflows, then add monitoring. Book a free call.</p><div class="hero-cta"><a class="btn btn--accent" href="/contact#book">Book a free strategy call <svg><use href="/assets/icons.svg#arrow"/></svg></a><a class="btn btn--line" href="/services#packages">See packages</a></div></div>
+    </div>
+  </div>
+  <section class="section band band--alt art-related" aria-labelledby="rel-title"><div class="container"><div class="sec-head"><div><h2 class="h-lg" id="rel-title">Keep reading</h2></div><a class="link" href="/blog/">All articles <svg><use href="/assets/icons.svg#arrow-up-right"/></svg></a></div><div class="rel-grid"><a class="post-card " href="/blog/zapier-vs-make-vs-n8n" data-cat="workflow-automation"><span class="post-media"><img src="/assets/cover/zap-fub-deals.webp" alt="A multi-path Zapier workflow connecting Follow Up Boss and Google Sheets" width="1440" height="900" loading="lazy" decoding="async"></span><span class="post-body"><span class="post-cat">Workflow Automation</span><b>Zapier vs Make vs n8n: which automation tool should you use?</b><span class="post-ex">An honest comparison of Zapier, Make and n8n for small businesses: ease of use, pricing models, AI agents, reliability and when to use each, from a...</span><span class="post-meta">3 min read</span></span></a><a class="post-card " href="/blog/send-leads-to-crm-automatically" data-cat="workflow-automation"><span class="post-media"><img src="/assets/cover/zap-lead-validation.webp" alt="Zapier lead validation pipeline sending clean leads into the CRM" width="1440" height="900" loading="lazy" decoding="async"></span><span class="post-body"><span class="post-cat">Workflow Automation</span><b>How to send website and Facebook leads into your CRM automatically</b><span class="post-ex">Stop copying leads by hand. How to connect website forms, Facebook Lead Ads and landing pages to your CRM with native integrations, Zapier, Make or...</span><span class="post-meta">3 min read</span></span></a><a class="post-card" href="/case-studies/agency-routing"><span class="post-media"><span class="post-mock"><div class="mock-card"><div class="mock-head">Lead routing · Zapier <b>Live</b></div>
+            <div class="m-flow"><div class="m-node"><b>Site A</b>WPForms</div><span class="m-arrow">→</span><div class="m-node"><b>Zapier</b>Map + filter</div><span class="m-arrow">→</span><div class="m-node"><b>JobTread</b>New lead</div></div>
+            <div class="m-flow" style="margin-top:.6rem"><div class="m-node"><b>Site B</b>WPForms</div><span class="m-arrow">→</span><div class="m-node"><b>Zapier</b>Required-field fix</div><span class="m-arrow">→</span><div class="m-node"><b>Zoho CRM</b>New lead</div></div></div></span></span><span class="post-body"><span class="post-cat">Case study &middot; Zapier &#183; Agency</span><b>Fixing lead routing for an agency&#39;s client websites</b><span class="post-ex">Two client sites were losing leads before they reached the CRM. I traced it, worked with their developer and rebuilt the flow.</span><span class="post-meta">Marketing agency &#183; US</span></span></a></div></div></section>
+</article>
+</main>
+<footer class="site-footer band">
+  <div class="container">
+    <div class="f-cta">
+      <div><h2>Ready for a CRM that follows up for you?</h2><p>Free 30-minute strategy call. You leave with a clear plan, even if we don't work together.</p></div>
+      <div class="hero-cta"><a class="btn btn--accent" href="/contact#book">Book a strategy call <svg><use href="/assets/icons.svg#arrow"/></svg></a><a class="btn btn--line" href="https://wa.me/2349169731457" target="_blank" rel="noopener">WhatsApp me</a></div>
+    </div>
+    <div class="f-top">
+      <div>
+        <a href="/" class="brand" aria-label="Laolu Logic, home"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect class="m-bg" width="40" height="40" rx="11"/><path class="m-l" d="M12 9.5v14h9" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path class="m-l" d="M19 16.5v14h9" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle class="m-n1" cx="12" cy="9.5" r="2.7"/><circle class="m-n2" cx="28" cy="30.5" r="2.7"/></svg><span><b>Laolu</b><em>Logic</em></span></a>
+        <p>CRM and AI automation for businesses that live on follow-up. Deep real estate CRM experience, certified on the platforms I build on.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/ibrahim-awosanya" target="_blank" rel="noopener" aria-label="LinkedIn"><i style="--logo:url(/assets/logos/linkedin.svg)"></i></a>
+          <a href="https://www.fiverr.com/lao_lu" target="_blank" rel="noopener" aria-label="Fiverr"><i style="--logo:url(/assets/logos/fiverr.svg)"></i></a>
+          <a href="https://www.upwork.com/freelancers/~01319b2bfa0f24446a" target="_blank" rel="noopener" aria-label="Upwork"><i style="--logo:url(/assets/logos/upwork.svg)"></i></a>
+          <a href="https://wa.me/2349169731457" target="_blank" rel="noopener" aria-label="WhatsApp"><i style="--logo:url(/assets/logos/whatsapp.svg)"></i></a>
+          <a href="mailto:laolulogic@gmail.com" aria-label="Email laolulogic@gmail.com"><svg aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Company</h4><ul><li><a href="/services">Services</a></li><li><a href="/services#packages">Packages</a></li><li><a href="/real-estate">Real Estate CRM</a></li><li><a href="/work">Case studies</a></li><li><a href="/blog/">Blog</a></li><li><a href="/about">About</a></li><li><a href="/faq">FAQ</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Services</h4><ul><li><a href="/services#crm">CRM setup &amp; migration</a></li><li><a href="/services#automation">Workflow automation</a></li><li><a href="/services#ai-voice">AI voice agents</a></li><li><a href="/services#email-sms">Email &amp; SMS automation</a></li><li><a href="/services#reactivation">Database reactivation</a></li><li><a href="/services#management">CRM management</a></li></ul></div>
+      <div class="f-col"><h4>Get in touch</h4><ul><li><a href="/contact#book">Book a strategy call</a></li><li><a href="mailto:laolulogic@gmail.com">laolulogic@gmail.com</a></li><li><a href="https://wa.me/2349169731457" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="tel:+2349169731457">+234 916 973 1457</a></li><li><a href="https://www.fiverr.com/lao_lu" target="_blank" rel="noopener">Hire on Fiverr</a></li><li><a href="https://www.upwork.com/freelancers/~01319b2bfa0f24446a" target="_blank" rel="noopener">Hire on Upwork</a></li></ul></div>
+    </div>
+    <div class="f-bottom"><span>&copy; <span data-year>2026</span> Laolu Logic &middot; Ibrahim &ldquo;Laolu&rdquo; Awosanya</span><span><a href="/faq">FAQ</a> &middot; <a href="/sitemap.xml">Sitemap</a> &middot; Remote, working with teams worldwide</span></div>
+  </div>
+</footer>
+<a class="wa-float" href="https://wa.me/2349169731457?text=Hi%20Laolu%2C%20I%20found%20you%20on%20your%20website." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i style="--logo:url(/assets/logos/whatsapp.svg)"></i><span class="tip">Chat on WhatsApp</span></a>
+<button class="to-top" type="button" aria-label="Back to top"><svg class="ring" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26"/></svg><svg class="arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></button>
+<script src="/js/config.js"></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>

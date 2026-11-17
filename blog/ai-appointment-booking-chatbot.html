@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AI Chatbots That Book Appointments: A Practical Setup Guide | Laolu Logic</title>
+  <meta name="description" content="How AI booking chatbots work on your website, WhatsApp and SMS: checking availability, booking, rescheduling and cancelling, plus the knowledge, guardrails and CRM handoff that make them reliable.">
+  <link rel="canonical" href="https://laolulogic.github.io/blog/ai-appointment-booking-chatbot">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Ibrahim Awosanya (Laolu)">
+  <meta name="theme-color" content="#0c0a11">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Laolu Logic">
+  <meta property="og:title" content="AI Chatbots That Book Appointments: A Practical Setup Guide | Laolu Logic">
+  <meta property="og:description" content="How AI booking chatbots work on your website, WhatsApp and SMS: checking availability, booking, rescheduling and cancelling, plus the knowledge, guardrails and CRM handoff that make them reliable.">
+  <meta property="og:url" content="https://laolulogic.github.io/blog/ai-appointment-booking-chatbot">
+  <meta property="og:image" content="https://laolulogic.github.io/assets/cover/n8n-salon-agent.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Chatbots That Book Appointments: A Practical Setup Guide | Laolu Logic">
+  <meta name="twitter:description" content="How AI booking chatbots work on your website, WhatsApp and SMS: checking availability, booking, rescheduling and cancelling, plus the knowledge, guardrails and CRM handoff that make them reliable.">
+  <meta name="twitter:image" content="https://laolulogic.github.io/assets/cover/n8n-salon-agent.webp">
+  <meta property="article:published_time" content="2026-11-17"><meta name="keywords" content="AI appointment booking chatbot, AI booking agent, WhatsApp booking bot, AI chatbot for appointments, n8n AI agent booking">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Laolu Logic blog" href="https://laolulogic.github.io/blog/feed.xml">
+  <script>(function(){try{var t=localStorage.getItem('ll-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+ {"@type":"ProfessionalService","@id":"https://laolulogic.github.io/#business","name":"Laolu Logic","url":"https://laolulogic.github.io/","logo":"https://laolulogic.github.io/assets/img/logo.png","image":"https://laolulogic.github.io/assets/img/og.png","description":"CRM and AI automation: CRM setup and migration, workflow automation, AI voice agents, email and SMS automation and CRM management for real estate teams and growing businesses.","email":"laolulogic@gmail.com","telephone":"+2349169731457","areaServed":"Worldwide","founder":{"@id":"https://laolulogic.github.io/#person"},"priceRange":"Custom quotes","sameAs":["https://www.fiverr.com/lao_lu","https://www.upwork.com/freelancers/~01319b2bfa0f24446a","https://www.linkedin.com/in/ibrahim-awosanya"],"knowsAbout":["CRM implementation","AI automation","Follow Up Boss","Lofty CRM","GoHighLevel","BoldTrail","kvCORE","HubSpot","Zapier","Make.com","n8n","Vapi","Retell AI","CRM migration","Real estate CRM","AI voice agents","Email marketing automation","SMS automation","A2P 10DLC","Database reactivation","Lead routing"]},
+ {"@type":"Person","@id":"https://laolulogic.github.io/#person","name":"Ibrahim Awosanya","alternateName":"Laolu","jobTitle":"CRM & AI Automation Specialist","url":"https://laolulogic.github.io/about","image":"https://laolulogic.github.io/assets/img/laolu-portrait.png","worksFor":{"@id":"https://laolulogic.github.io/#business"},"sameAs":["https://www.fiverr.com/lao_lu","https://www.upwork.com/freelancers/~01319b2bfa0f24446a","https://www.linkedin.com/in/ibrahim-awosanya"],"hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HighLevel Certified Admin","recognizedBy":{"@type":"Organization","name":"HighLevel"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HighLevel AI Employee Certification","recognizedBy":{"@type":"Organization","name":"HighLevel"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HubSpot Digital Marketing Certification","recognizedBy":{"@type":"Organization","name":"HubSpot Academy"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HubSpot Marketing Software Certification","recognizedBy":{"@type":"Organization","name":"HubSpot Academy"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"HubSpot Revenue Operations (RevOps) Certification","recognizedBy":{"@type":"Organization","name":"HubSpot Academy"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Zapier Certified","recognizedBy":{"@type":"Organization","name":"Zapier"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Make Academy Certification","recognizedBy":{"@type":"Organization","name":"Make"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"n8n Course Certification","recognizedBy":{"@type":"Organization","name":"n8n"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Klaviyo Academy Certification","recognizedBy":{"@type":"Organization","name":"Klaviyo"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Zoho CRM Certification","recognizedBy":{"@type":"Organization","name":"Zoho"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Airtable Builder Certification","recognizedBy":{"@type":"Organization","name":"Airtable"}}]},
+ {"@type":"WebSite","@id":"https://laolulogic.github.io/#website","url":"https://laolulogic.github.io/","name":"Laolu Logic","publisher":{"@id":"https://laolulogic.github.io/#business"},"inLanguage":"en"}
+]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI chatbots that book appointments: a practical setup guide","description":"How AI booking chatbots work on your website, WhatsApp and SMS: checking availability, booking, rescheduling and cancelling, plus the knowledge, guardrails and CRM handoff that make them reliable.","image":"https://laolulogic.github.io/assets/cover/n8n-salon-agent.webp","datePublished":"2026-11-17","dateModified":"2026-11-17","author":{"@id":"https://laolulogic.github.io/#person"},"publisher":{"@id":"https://laolulogic.github.io/#business"},"mainEntityOfPage":"https://laolulogic.github.io/blog/ai-appointment-booking-chatbot","articleSection":"AI Automation","keywords":"AI appointment booking chatbot, AI booking agent, WhatsApp booking bot, AI chatbot for appointments, n8n AI agent booking","wordCount":244}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://laolulogic.github.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://laolulogic.github.io/blog/"},{"@type":"ListItem","position":3,"name":"AI chatbots that book appointments: a practical setup guide"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can an AI chatbot really book appointments?","acceptedAnswer":{"@type":"Answer","text":"Yes. It connects to your calendar, offers open times, books the slot and sends a confirmation. It can also reschedule and cancel."}},{"@type":"Question","name":"Which channels can it work on?","acceptedAnswer":{"@type":"Answer","text":"Website chat, WhatsApp, SMS, Facebook and Instagram messages, depending on the platform you use."}},{"@type":"Question","name":"What happens if the bot cannot answer a question?","acceptedAnswer":{"@type":"Answer","text":"It should say so politely and hand the conversation to a person, with the context attached so the customer does not repeat themselves."}}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="container nav">
+    <a href="/" class="brand" aria-label="Laolu Logic, home"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect class="m-bg" width="40" height="40" rx="11"/><path class="m-l" d="M12 9.5v14h9" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path class="m-l" d="M19 16.5v14h9" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle class="m-n1" cx="12" cy="9.5" r="2.7"/><circle class="m-n2" cx="28" cy="30.5" r="2.7"/></svg><span><b>Laolu</b><em>Logic</em></span></a>
+    <nav aria-label="Main"><ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/services">Services</a></li><li><a href="/real-estate">Real Estate</a></li><li><a href="/work">Case Studies</a></li><li><a href="/blog/" aria-current="page">Blog</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ul></nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark mode"><svg class="i-moon"><use href="/assets/icons.svg#moon"/></svg><svg class="i-sun"><use href="/assets/icons.svg#sun"/></svg></button>
+      <a href="/contact#book" class="btn btn--solid btn--sm"><span class="dot" aria-hidden="true"></span>Book a call</a>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-panel" id="menu-panel" aria-hidden="true">
+  <ol><li><a href="/">Home</a></li><li><a href="/services">Services</a></li><li><a href="/real-estate">Real Estate</a></li><li><a href="/work">Case Studies</a></li><li><a href="/blog/">Blog</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ol>
+  <div class="menu-foot">
+    <a class="btn btn--accent btn--sm" href="/contact#book">Book a strategy call</a>
+    <a class="btn btn--line btn--sm" href="https://wa.me/2349169731457" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn--line btn--sm" href="mailto:laolulogic@gmail.com">Email</a>
+  </div>
+</div>
+<main id="main">
+<article class="art art--post">
+  <header class="art-hero band">
+    <div class="container art-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span aria-current="page">AI chatbots that book appointments: a practical setup guide</span></nav>
+      <p class="art-kicker"><a class="chip chip--accent" href="/blog/?cat=ai-automation">AI Automation</a></p>
+      <h1 class="art-title">AI chatbots that book appointments: a practical setup guide</h1>
+      <p class="art-dek">How AI booking chatbots work on your website, WhatsApp and SMS: checking availability, booking, rescheduling and cancelling, plus the knowledge, guardrails and CRM handoff that make them reliable.</p>
+      <div class="art-meta"><span class="art-by"><img src="/assets/img/laolu-portrait-480.webp" alt="" width="28" height="28">Ibrahim &ldquo;Laolu&rdquo; Awosanya</span><span><svg><use href="/assets/icons.svg#calendar"/></svg><time datetime="2026-11-17">November 17, 2026</time></span><span><svg><use href="/assets/icons.svg#clock"/></svg>3 min read</span></div>
+    </div>
+  </header>
+  <div class="container art-cover"><figure class="art-shot"><div class="art-shot-bar"><i></i><i></i><i></i><span>n8n AI agent</span></div><button class="art-shot-img" type="button" data-zoom="/assets/cover/n8n-salon-agent.webp" aria-label="Zoom image"><img src="/assets/cover/n8n-salon-agent.webp" alt="n8n salon AI agent that books, reschedules and cancels appointments" width="1440" height="900" decoding="async" fetchpriority="high"></button></figure></div>
+  
+  <div class="container art-layout">
+    <aside class="art-aside" aria-label="On this page">
+      <div class="art-sticky">
+        <p class="art-aside-h">On this page</p>
+        <ol class="art-toc"><li><a href="#what-a-booking-agent-does">What a booking agent does</a></li><li><a href="#where-to-put-it">Where to put it</a></li><li><a href="#what-i-ve-built">What I&#39;ve built</a></li><li><a href="#setup-checklist">Setup checklist</a></li><li><a href="#measure-the-result">Measure the result</a></li><li><a href="#frequently-asked-questions">Frequently asked questions</a></li></ol>
+        <div class="art-aside-cta"><strong>Want this done for you?</strong><p>Free 30-minute strategy call. Clear plan, no pressure.</p><a class="btn btn--accent btn--sm" href="/contact#book">Book a call</a></div>
+        <div class="art-share"><button type="button" class="link" data-copy-url><svg><use href="/assets/icons.svg#copy"/></svg>Copy link</button><a class="link" data-share="linkedin" href="#" target="_blank" rel="noopener"><i style="--logo:url(/assets/logos/linkedin.svg)"></i>Share</a></div>
+      </div>
+    </aside>
+    <div class="art-body prose">
+<div class="art-takeaways"><p class="art-takeaways-h">Key takeaways</p><ul><li>A booking agent checks live availability, books, reschedules and cancels.</li><li>Put it where customers already message you: website chat, WhatsApp or SMS.</li><li>Give it a small, approved knowledge base and clear limits.</li><li>Log every booking and conversation in your CRM.</li></ul></div>
+<p>A front desk spends hours a day on the same conversations: "Do you have anything Thursday?", "Can I move my appointment?", "How much is a consultation?". An AI booking agent handles those instantly, on the channels customers already use.</p>
+
+<h2 id="what-a-booking-agent-does">What a booking agent does</h2>
+<ul>
+  <li>Answers common questions from approved information.</li>
+  <li>Checks real availability in your calendar.</li>
+  <li>Books, reschedules and cancels appointments.</li>
+  <li>Sends confirmations and reminders.</li>
+  <li>Hands off to a person when needed.</li>
+</ul>
+
+<h2 id="where-to-put-it">Where to put it</h2>
+<table>
+  <thead><tr><th>Channel</th><th>Best for</th></tr></thead>
+  <tbody>
+    <tr><td>Website chat</td><td>Visitors ready to book now</td></tr>
+    <tr><td>WhatsApp</td><td>Markets where customers prefer messaging</td></tr>
+    <tr><td>SMS</td><td>Replies to follow-up texts and missed calls</td></tr>
+    <tr><td>Voice</td><td>Callers (see <a href="/blog/ai-voice-agents-small-business">AI voice agents</a>)</td></tr>
+  </tbody>
+</table>
+
+<aside class="art-inline-cta"><div><strong>Want a bot that fills your calendar?</strong><p>I build booking agents for websites, WhatsApp and SMS. Book a free call to see a demo.</p></div><a class="btn btn--accent btn--sm" href="/contact#book">Book a free strategy call <svg><use href="/assets/icons.svg#arrow"/></svg></a></aside>
+<h2 id="what-i-ve-built">What I've built</h2>
+<p>From my n8n library: a salon booking agent that books, reschedules and cancels; a webhook booking agent for website chat; WhatsApp knowledge-base agents that answer FAQs and capture leads; and a Chatwoot WhatsApp support bot (<a href="/case-studies/ai-booking-agents">see the case study</a>).</p>
+
+<h2 id="setup-checklist">Setup checklist</h2>
+<ol>
+  <li><strong>Knowledge:</strong> services, durations, policies, locations. Keep it short and approved.</li>
+  <li><strong>Calendar rules:</strong> availability, buffers and minimum notice.</li>
+  <li><strong>Guardrails:</strong> no invented prices or promises; clear handoff triggers.</li>
+  <li><strong>Memory:</strong> the bot should remember the conversation so customers don't repeat themselves.</li>
+  <li><strong>CRM logging:</strong> contact, booking and conversation summary saved every time.</li>
+  <li><strong>Testing:</strong> realistic conversations, including awkward ones, before launch.</li>
+</ol>
+
+<h2 id="measure-the-result">Measure the result</h2>
+<p>Track bookings made by the bot, handoff rate and time saved. Review conversations weekly at first and tune the instructions. Want one built? It's part of the <a href="/services#packages">AI Front Desk package</a>.</p><h2 id="frequently-asked-questions">Frequently asked questions</h2><div class="faq art-faq"><details><summary><span class="q">Can an AI chatbot really book appointments?</span><span class="pm"><svg><use href="/assets/icons.svg#plus"/></svg></span></summary><div class="answer"><p>Yes. It connects to your calendar, offers open times, books the slot and sends a confirmation. It can also reschedule and cancel.</p></div></details><details><summary><span class="q">Which channels can it work on?</span><span class="pm"><svg><use href="/assets/icons.svg#plus"/></svg></span></summary><div class="answer"><p>Website chat, WhatsApp, SMS, Facebook and Instagram messages, depending on the platform you use.</p></div></details><details><summary><span class="q">What happens if the bot cannot answer a question?</span><span class="pm"><svg><use href="/assets/icons.svg#plus"/></svg></span></summary><div class="answer"><p>It should say so politely and hand the conversation to a person, with the context attached so the customer does not repeat themselves.</p></div></details></div>
+<div class="art-author"><img src="/assets/img/laolu-portrait-480.webp" alt="Ibrahim 'Laolu' Awosanya" width="72" height="72" loading="lazy"><div><p class="art-author-h">Written by Ibrahim &ldquo;Laolu&rdquo; Awosanya</p><p>CRM &amp; AI automation specialist, Level 2 seller on Fiverr and certified across HighLevel, HubSpot, Zapier, Make, n8n and more. I build CRMs and automations that follow up on every lead. <a class="link" href="/about">More about me</a></p></div></div>
+<div class="art-end-cta"><h2 class="no-toc">Want a bot that fills your calendar?</h2><p>I build booking agents for websites, WhatsApp and SMS. Book a free call to see a demo.</p><div class="hero-cta"><a class="btn btn--accent" href="/contact#book">Book a free strategy call <svg><use href="/assets/icons.svg#arrow"/></svg></a><a class="btn btn--line" href="/services#packages">See packages</a></div></div>
+    </div>
+  </div>
+  <section class="section band band--alt art-related" aria-labelledby="rel-title"><div class="container"><div class="sec-head"><div><h2 class="h-lg" id="rel-title">Keep reading</h2></div><a class="link" href="/blog/">All articles <svg><use href="/assets/icons.svg#arrow-up-right"/></svg></a></div><div class="rel-grid"><a class="post-card " href="/blog/ai-voice-agents-small-business" data-cat="ai-automation"><span class="post-media"><img src="/assets/cover/vapi-voice-agent.webp" alt="Vapi voice agent cost and latency breakdown: about 11 cents per minute and 990 ms" width="1440" height="900" loading="lazy" decoding="async"></span><span class="post-body"><span class="post-cat">AI Automation</span><b>AI voice agents for small business: what they do and when they pay off</b><span class="post-ex">How AI receptionists and voice agents answer calls, qualify leads and book appointments, what they cost per minute, where they fail and how to launch...</span><span class="post-meta">3 min read</span></span></a><a class="post-card " href="/blog/vapi-vs-retell-ai" data-cat="ai-automation"><span class="post-media"><img src="/assets/cover/n8n-booking.webp" alt="n8n workflow that checks calendar conflicts before a voice agent books" width="1440" height="900" loading="lazy" decoding="async"></span><span class="post-body"><span class="post-cat">AI Automation</span><b>Vapi vs Retell AI: choosing a platform for your AI receptionist</b><span class="post-ex">A builder&#39;s comparison of Vapi and Retell AI for AI voice agents: flexibility, voice quality, latency, calendar booking, CRM integration and which...</span><span class="post-meta">3 min read</span></span></a><a class="post-card" href="/case-studies/ai-booking-agents"><span class="post-media"><img src="/assets/cover/n8n-salon-agent.webp" alt="" width="1440" height="900" loading="lazy" decoding="async"></span><span class="post-body"><span class="post-cat">Case study &middot; n8n &#183; AI agents</span><b>AI booking agents that fill the calendar while you sleep</b><span class="post-ex">Chat and voice agents on WhatsApp and the web that answer questions, check availability and book, reschedule or cancel on their own.</span><span class="post-meta">Salons, clinics &amp; local services</span></span></a></div></div></section>
+</article>
+</main>
+<footer class="site-footer band">
+  <div class="container">
+    <div class="f-cta">
+      <div><h2>Ready for a CRM that follows up for you?</h2><p>Free 30-minute strategy call. You leave with a clear plan, even if we don't work together.</p></div>
+      <div class="hero-cta"><a class="btn btn--accent" href="/contact#book">Book a strategy call <svg><use href="/assets/icons.svg#arrow"/></svg></a><a class="btn btn--line" href="https://wa.me/2349169731457" target="_blank" rel="noopener">WhatsApp me</a></div>
+    </div>
+    <div class="f-top">
+      <div>
+        <a href="/" class="brand" aria-label="Laolu Logic, home"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect class="m-bg" width="40" height="40" rx="11"/><path class="m-l" d="M12 9.5v14h9" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path class="m-l" d="M19 16.5v14h9" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle class="m-n1" cx="12" cy="9.5" r="2.7"/><circle class="m-n2" cx="28" cy="30.5" r="2.7"/></svg><span><b>Laolu</b><em>Logic</em></span></a>
+        <p>CRM and AI automation for businesses that live on follow-up. Deep real estate CRM experience, certified on the platforms I build on.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/ibrahim-awosanya" target="_blank" rel="noopener" aria-label="LinkedIn"><i style="--logo:url(/assets/logos/linkedin.svg)"></i></a>
+          <a href="https://www.fiverr.com/lao_lu" target="_blank" rel="noopener" aria-label="Fiverr"><i style="--logo:url(/assets/logos/fiverr.svg)"></i></a>
+          <a href="https://www.upwork.com/freelancers/~01319b2bfa0f24446a" target="_blank" rel="noopener" aria-label="Upwork"><i style="--logo:url(/assets/logos/upwork.svg)"></i></a>
+          <a href="https://wa.me/2349169731457" target="_blank" rel="noopener" aria-label="WhatsApp"><i style="--logo:url(/assets/logos/whatsapp.svg)"></i></a>
+          <a href="mailto:laolulogic@gmail.com" aria-label="Email laolulogic@gmail.com"><svg aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col"><h4>Company</h4><ul><li><a href="/services">Services</a></li><li><a href="/services#packages">Packages</a></li><li><a href="/real-estate">Real Estate CRM</a></li><li><a href="/work">Case studies</a></li><li><a href="/blog/">Blog</a></li><li><a href="/about">About</a></li><li><a href="/faq">FAQ</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Services</h4><ul><li><a href="/services#crm">CRM setup &amp; migration</a></li><li><a href="/services#automation">Workflow automation</a></li><li><a href="/services#ai-voice">AI voice agents</a></li><li><a href="/services#email-sms">Email &amp; SMS automation</a></li><li><a href="/services#reactivation">Database reactivation</a></li><li><a href="/services#management">CRM management</a></li></ul></div>
+      <div class="f-col"><h4>Get in touch</h4><ul><li><a href="/contact#book">Book a strategy call</a></li><li><a href="mailto:laolulogic@gmail.com">laolulogic@gmail.com</a></li><li><a href="https://wa.me/2349169731457" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="tel:+2349169731457">+234 916 973 1457</a></li><li><a href="https://www.fiverr.com/lao_lu" target="_blank" rel="noopener">Hire on Fiverr</a></li><li><a href="https://www.upwork.com/freelancers/~01319b2bfa0f24446a" target="_blank" rel="noopener">Hire on Upwork</a></li></ul></div>
+    </div>
+    <div class="f-bottom"><span>&copy; <span data-year>2026</span> Laolu Logic &middot; Ibrahim &ldquo;Laolu&rdquo; Awosanya</span><span><a href="/faq">FAQ</a> &middot; <a href="/sitemap.xml">Sitemap</a> &middot; Remote, working with teams worldwide</span></div>
+  </div>
+</footer>
+<a class="wa-float" href="https://wa.me/2349169731457?text=Hi%20Laolu%2C%20I%20found%20you%20on%20your%20website." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i style="--logo:url(/assets/logos/whatsapp.svg)"></i><span class="tip">Chat on WhatsApp</span></a>
+<button class="to-top" type="button" aria-label="Back to top"><svg class="ring" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26"/></svg><svg class="arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></button>
+<script src="/js/config.js"></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>

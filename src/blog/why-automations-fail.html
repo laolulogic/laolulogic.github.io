@@ -1,0 +1,53 @@
+<!--META
+{
+  "order": 24,
+  "title": "Why Automations Fail Quietly (and How to Catch Errors Early) | Laolu Logic",
+  "h1": "Why automations fail quietly, and how to catch errors before clients do",
+  "description": "The most common reasons Zapier, Make, n8n and CRM automations break silently, and the monitoring, alerts and testing habits that catch problems before leads are lost.",
+  "category": "Workflow Automation",
+  "cover": "assets/cover/n8n-onboarding.webp",
+  "coverAlt": "n8n onboarding workflow with branching, logging and alerts",
+  "coverLabel": "n8n",
+  "keywords": "automation errors, Zapier errors, Zap not working, automation monitoring, n8n error handling, Make error handling, broken automation fix",
+  "relatedCase": "agency-routing",
+  "ctaTitle": "Have an automation that keeps breaking?",
+  "ctaText": "I diagnose and fix broken zaps, scenarios and workflows, then add monitoring. Book a free call.",
+  "takeaways": ["Most automations fail because something upstream changed, not because the logic was wrong.", "A 'success' status doesn't mean the right thing happened.", "Alert on errors and on missing results.", "Log every run somewhere a human can check."],
+  "faq": [
+    {"q": "Why did my Zap stop working?", "a": "Common causes are an expired app connection, a changed form field, a required field in the CRM, an app API change or a filter that no longer matches."},
+    {"q": "How do I get alerted when an automation fails?", "a": "Use the platform's error notifications and add your own: an error path that emails or messages you, plus a check that confirms the expected record was created."},
+    {"q": "Can you fix automations someone else built?", "a": "Yes. I regularly diagnose and repair existing zaps, scenarios and CRM workflows and document them so they are easier to maintain."}
+  ]
+}
+META-->
+<p>The most dangerous automation isn't the one that throws an error. It's the one that says "success" while leads quietly stop arriving. I fix broken automations every week; these are the causes I see most, and how to catch them.</p>
+
+<h2>Why automations break</h2>
+<ol>
+  <li><strong>Expired connections:</strong> someone changes a password and the app disconnects.</li>
+  <li><strong>Changed fields:</strong> a form field is renamed and the data stops mapping.</li>
+  <li><strong>Required fields:</strong> the CRM rejects a record because a field is missing.</li>
+  <li><strong>API changes:</strong> an app updates and an old step stops working.</li>
+  <li><strong>Plan limits:</strong> a task or operation limit is reached and runs are held.</li>
+  <li><strong>Silent filters:</strong> a filter that no longer matches anything.</li>
+</ol>
+<p>In one project, a Zapier plan had frozen and 37 leads were held. I diagnosed it, fixed the plan and replayed the held leads safely so none were lost (<a href="/case-studies/investor-migration">read the case study</a>).</p>
+
+<h2>"Success" is not the same as working</h2>
+<p>A zap can run successfully and still do the wrong thing: create a duplicate, skip a step on a filter, or update the wrong record. Monitoring has to check outcomes, not just statuses.</p>
+
+<h2>How I monitor automations</h2>
+<ul>
+  <li><strong>Error paths:</strong> every important workflow has a branch that alerts a human on failure.</li>
+  <li><strong>Outcome checks:</strong> a daily or weekly comparison, for example form submissions vs new CRM contacts.</li>
+  <li><strong>Run logs:</strong> key runs logged to a sheet or database someone can read.</li>
+  <li><strong>Fallbacks:</strong> a backup message or task when an AI or API step fails.</li>
+</ul>
+
+<h2>Testing habits that prevent problems</h2>
+<ol>
+  <li>Test every path with realistic data before going live.</li>
+  <li>Retest after any change to a form, field or connected app.</li>
+  <li>Document what each workflow does and who owns it.</li>
+</ol>
+<p>If you've inherited automations nobody understands, I can audit, fix and document them, or keep watch monthly with <a href="/services#management">CRM management</a>.</p>

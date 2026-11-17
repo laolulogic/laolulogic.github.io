@@ -1,0 +1,50 @@
+<!--META
+{
+  "order": 14,
+  "title": "Vapi vs Retell AI: Choosing a Platform for Your AI Receptionist | Laolu Logic",
+  "h1": "Vapi vs Retell AI: choosing a platform for your AI receptionist",
+  "description": "A builder's comparison of Vapi and Retell AI for AI voice agents: flexibility, voice quality, latency, calendar booking, CRM integration and which one to choose for your business.",
+  "category": "AI Automation",
+  "cover": "assets/cover/n8n-booking.webp",
+  "coverAlt": "n8n workflow that checks calendar conflicts before a voice agent books",
+  "coverLabel": "n8n + voice agent",
+  "keywords": "Vapi vs Retell, Vapi vs Retell AI, best AI voice agent platform, AI receptionist platform, Retell AI review, Vapi review",
+  "relatedCase": "voice",
+  "ctaTitle": "Want a voice agent built on the right platform?",
+  "ctaText": "I build on both Vapi and Retell AI. I'll recommend one for your use case on a free call.",
+  "takeaways": ["Both platforms can run a natural-sounding receptionist that books appointments.", "Vapi offers more control over models, voices and transcribers.", "Retell AI is quicker to get running with strong conversation handling.", "The calendar and CRM integration matters more than the platform choice."],
+  "faq": [
+    {"q": "Which is cheaper, Vapi or Retell AI?", "a": "Costs depend on the voice, model and telephony you choose on each platform. In practice both run at cents per minute; my Vapi receptionist build ran at about 11 cents per minute."},
+    {"q": "Can both book appointments into my calendar?", "a": "Yes, through tools or webhooks. I usually connect them to n8n or the CRM so the agent checks availability, avoids conflicts and books the slot."},
+    {"q": "Can I switch platforms later?", "a": "Yes. The prompt, knowledge and booking workflow can be moved; only the platform configuration needs rebuilding."}
+  ]
+}
+META-->
+<p>Vapi and Retell AI are two of the most popular platforms for building AI voice agents. I've built receptionists on both, for a roofing contractor and a medical practice among others. Here's how they compare in practice.</p>
+
+<h2>What both do well</h2>
+<ul>
+  <li>Natural voices with fast, sub-second responses.</li>
+  <li>Inbound and outbound calls on your own number.</li>
+  <li>Tools and webhooks for booking appointments and updating your CRM.</li>
+  <li>Call recordings, transcripts and summaries.</li>
+</ul>
+
+<h2>Vapi: maximum control</h2>
+<p>Vapi lets you choose each layer: the transcriber, the language model and the voice. That means you can tune cost and quality precisely. My Vapi receptionist used Deepgram, GPT-4o mini and an ElevenLabs voice for about <strong>$0.11 per minute</strong> and roughly one second of latency (<a href="/case-studies/voice">see the case study</a>).</p>
+<p><strong>Choose Vapi if</strong> you want fine-grained control or plan to scale call volume and optimize cost.</p>
+
+<h2>Retell AI: quick to production</h2>
+<p>Retell AI focuses on getting a reliable, natural conversation running quickly, with strong handling of interruptions and turn-taking. For one client, a Retell agent books appointments through an n8n workflow that looks up the right calendar, checks for conflicts and either books or offers another time.</p>
+<p><strong>Choose Retell AI if</strong> you want a smooth receptionist live fast with less configuration.</p>
+
+<h2>What matters more than the platform</h2>
+<ol>
+  <li><strong>The prompt:</strong> your real FAQs, tone and strict guardrails.</li>
+  <li><strong>The booking logic:</strong> live availability and conflict checks.</li>
+  <li><strong>The CRM handoff:</strong> contact created, summary logged, team alerted.</li>
+  <li><strong>Ongoing tuning:</strong> reviewing real calls weekly at first.</li>
+</ol>
+
+<h2>My recommendation</h2>
+<p>For most small businesses, either platform works. I choose based on call volume, integrations and how much tuning the client wants. Read <a href="/blog/ai-voice-agents-small-business">AI voice agents for small business</a> for the bigger picture, or see the <a href="/services#packages">AI Front Desk package</a>.</p>
